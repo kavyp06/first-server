@@ -11,6 +11,11 @@ app.get('/api/getName', (req, res) => {
     res.json({ name: 'My Website' });
 });
 
+app.get('/api/getImage', (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    res.sendFile(path.join(__dirname, "public", "images.jpg"));
+});
+
 app.use("/public", express.static(path.join(__dirname, "public")))
 app.use("/public", serveIndex(path.join(__dirname, "public"), {}))
 
