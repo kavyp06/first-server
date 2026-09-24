@@ -8,7 +8,7 @@ const port = 3000;
 
 app.get('/api/getName', (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');
-    res.json({ name: 'My Website' });
+    res.json({ name: 'Barcelona' });
 });
 
 app.get('/api/getImage', (req, res) => {
