@@ -3,7 +3,7 @@ const path = require("path");
 const serveIndex = require("serve-index");
 require("serve-index")
 
-const app = expresss();
+const app = express();
 const port = 3000;
 
 app.get('/api/getName', (req, res) => {

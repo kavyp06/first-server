@@ -1,22 +1,51 @@
-const http = require("http");
+const express = require("express");
+const path = require("path");
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const app = express();
 
-const server = http.createServer( (req, res) => {
-    // res.write("Hello, Node.");
-    // res.end();
-    let method = req.method+ " ";
-    let url = req.url + "\n\n";
-    let headers = JSON.stringify(req.headers, null, 4);
+const PORT = process.env.PORT || 3000;
 
-    res.writeHead(200, {'content-Type': 'text/plain'});
-    res.write(method);
-    res.write(url);
-    res.write(headers);
-    res.end();
+
+// Home page
+app.get("/", (req, res) => {
+    res.send(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Course Server</title>
+        </head>
+
+        <body>
+            <h1>Hello from Kavya's server!</h1>
+            <p>This page is being served by Node.js and Express.</p>
+        </body>
+        </html>
+    `);
 });
 
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}`);
+
+// API - Website name
+app.get("/api/getName", (req, res) => {
+
+    res.set("Access-Control-Allow-Origin", "*");
+
+    res.json({
+        name: "Soul Mortal"
+    });
+});
+
+
+// API - Website image
+app.get("/api/getImage", (req, res) => {
+
+    res.set("Access-Control-Allow-Origin", "*");
+
+    res.sendFile(
+        path.join(__dirname, "public", "images.jpg")
+    );
+});
+
+
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server listening on port ${PORT}`);
 });
