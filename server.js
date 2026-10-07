@@ -30,7 +30,7 @@ app.get("/api/getName", (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
 
     res.json({
-        name: "Soul Mortal"
+        name: "RO-KO Mission 2027"
     });
 });
 
