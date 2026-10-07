@@ -41,7 +41,7 @@ app.get("/api/getImage", (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
 
     res.sendFile(
-        path.join(__dirname, "public", "images.jpg")
+        path.join(__dirname, "public", "vk.gif")
     );
 });
 
